@@ -15,7 +15,8 @@ jobs:
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
-          command: mvn verify
+          name: Test
+          command: mvn -Dtest=Calculadora* test
       - store_test_results:
           path: target/surefire-reports
       - save_cache:
@@ -30,7 +31,7 @@ jobs:
       # Replace this with steps to deploy to users
       - run:
           name: deploy
-          command: mvn -Dtest=Calculadora* test
+          command: '#e.g.'
 workflows:
   build-and-test:
     jobs:
